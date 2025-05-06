@@ -47,7 +47,7 @@ CREATE TABLE movies (
   title TEXT,
   year_released INTEGER,
   rated TEXT,
-  studio_id INTEGER
+ R
 );
 
 CREATE TABLE actors (
