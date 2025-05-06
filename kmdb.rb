@@ -291,12 +291,19 @@ puts "======"
 puts ""
 
 # Query the movies data and loop through the results to display the movies output.
-# TODO!
+# TODO! - ok
 # SELECT movies.title, movies.year_released, movies.rated, studios.name 
 # FROM movies INNER JOIN studios ON studios.id = movies.studio_id;
 
-all_movies = Movie.all
-p all_movies
+
+for movie in Movie.all
+    title = movie ["title"]
+    year_released = movie ["year_released"]
+    rated = movie ["rated"]
+    studio = Studio.find_by({"id" => movie ["studio_id"]})
+
+    puts "#{title}, #{year_released}, #{rated}, #{studio["name"]}"
+end
 
 
 # Prints a header for the cast output
@@ -306,4 +313,12 @@ puts "========"
 puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
-# TODO!
+# TODO! - ok
+
+for role in Role.all
+    movie = Movie.find_by({"id" => role ["movie_id"]})
+    actor = Actor.find_by({"id" => role ["actor_id"]})
+    character_name = role ["character_name"]
+
+    puts "#{movie["title"]}, #{actor["name"]}, #{character_name}"
+end
